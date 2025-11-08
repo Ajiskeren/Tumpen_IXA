@@ -415,7 +415,13 @@
 <script src="main.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-  AOS.init();
+document.addEventListener("DOMContentLoaded", function() {
+  AOS.init({
+    duration: 1000,
+    once: false
+  });
+  setTimeout(() => AOS.refresh(), 200); // kasih delay kecil biar pasti terdeteksi
+});
 </script>
     </body>
     </html>
