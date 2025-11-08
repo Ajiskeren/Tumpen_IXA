@@ -149,7 +149,7 @@ header {
     margin-left: 0px;
     transition:  0.3s;
     opacity: 0;
-    animation: slideTop .5s ease forwards;
+    animation: slideBottom .5s ease forwards;
     animation-delay: calc(.2 * var(--i));
 }
 
@@ -1217,7 +1217,7 @@ z-index: 1;
 }
 
 .card {
-  transform: translateX(500px);
+  transform: translateY(500px);
   background: #1e1e1e;
   padding: 30px;
   border-radius: 15px;
@@ -1231,7 +1231,7 @@ z-index: 1;
 
 .card.show {
     display: block;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 /* tombol aktif */
 .service-buttons button.active {
