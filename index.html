@@ -2,276 +2,418 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Tumpeng IX A</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Karakter dan tampilan dasar -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO dasar -->
+  <title>Judul Website Kamu</title>
+  <meta name="description" content="Website ini di buat untuk melestarikan budaya Indonesia memalui rasa. ">
+  <meta name="author" content="Melestarikan Budaya Melalui Rasa">
+  <meta name="robots" content="index, follow">
+
+  <!-- Warna tema untuk browser mobile -->
+  <meta name="theme-color" content="#FFFFF">
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:title" content="Melestarikan Budaya Melalui Rasa">
+  <meta property="og:description" content="Website ini di buat untuk melestarikan budaya Indonesia memalui rasa.">
+  <meta property="og:image" content="https://example.com/gambar.jpg">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Melestarikan Budaya Melalui Rasa">
+  <meta name="twitter:description" content="Website ini di buat untuk melestarikan budaya Indonesia memalui rasa.">
+  <meta name="twitter:image" content="https://example.com/gambar.jpg">
+
+  <!-- Ikon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="logo">Portfolio</a>
+
+      <!-- Tombol Toggle -->
+  <button id="openBtn"><i class='bx toggle-btnS bxs-left-arrow-alt' style="font-size: 25px;"></i></button>
+
+<div id="swipe-area"></div>
+
+<button id="toggleBtn" class="toggle-btn">
+    <div class="disc">
+    <img id="coverImg" src="assets/cover1.jpg" alt="cover">
+    </div>
+</button>
+<div id="overlay" class="overlay"></div>
+  <div class="sidebar" id="sidebar">
+       <h2>ᴺᴼᵂ ᴾᴸᴬᵞᴵᴺᴳ</h2>
+    <div class="cover">
+      <img id="cover" src="assets/cover1.jpg" alt="cover">
+    </div>
+    <div class="Title">
+    <div class="title">
+    <h4 id="title">Judul Lagu</h4>
+    <p id="artist">Artis</p>
+    </div>
+    <div class="time">
+    <span id="current">0:00</span>
+    /
+    <span id="duration">0:00</span>
+    </div>
+    </div>
+    <div><canvas class="spectrum" id="spectrum"></canvas></div>
+    <div id="PPN" class="controls">
+      <button id="prev"><i class='bx bx-skip-previous' style="font-size: 32px;"></i></button>
+      <button id="play">◀▶</button>
+      <button id="next"><i class='bx bx-skip-next' style="font-size: 32px;"></i></button>
+    </div>
+    <div>
+    <input type="range" id="seek" min="0" value="0" step="0.1">
+    </div>
+    <div class="lyrics" id="lyrics"></div>
+    <div class="playlist">
+    <h4 style="margin-top: 20px; margin-left: 20px; font-size: 25px;">Playlist</h4>
+    <ul id="playlist"></ul>
+    </div>
+    <audio id="audio"></audio>
+  </div>
+  </div>
+
+    <header data-aos="fade-down" data-aos-duration="800" class="header">
         <nav class="navbar">
             <a href="#" style="--i:1"class="active">Home</a>
-            <a href="#about" style="--i:2">About</a>
-            <a href="#services" style="--i:3">Skills</a> <!-- perbaiki 'Skill' menjadi 'Skills' -->
-            <a href="#skills" style="--i:4">Portfolio</a> <!-- perbaiki 'Portofolio' menjadi 'Portfolio' -->
+            <a href="#aboutT" style="--i:2">Sejarah</a>
+            <a href="#services" style="--i:3">Resep</a> <!-- perbaiki 'Skill' menjadi 'Skills' -->
+            <a href="#dokumentasii" style="--i:4">Dokumentasi</a>
             <a href="#contact" style="--i:5">Contact</a>
         </nav>
     </header>
-    <section class="home"> <!-- perbaiki 'Home' menjadi 'home' -->
+    <section class="home" id="home"> <!-- perbaiki 'Home' menjadi 'home' -->
+        <div data-aos="zoom-in" data-aos-duration="1000" class="Walpaper" ><img class="WallpaperCover" id="coverMain" src="assets/cover1.jpg" alt="cover" width="500px"></div>
         <div class="home-content">
-            <h3>Hello, It's Me</h3>
-            <h1>Riski Kurniawan</h1>
-            <h3>And I am a <span class="text"></span></h3>
-            <p>I am a computer science student</p> <!-- perbaiki teks ke bahasa Inggris -->
+            <h3>Melestarikan Budaya</h3>
+            <h1>Melalui Rasa</h1>
+            <h3>By : <span class="text"></span></h3>
+            <p>We Are Student 😎</p> <!-- perbaiki teks ke bahasa Inggris -->
             <div class="home-sci">
-                <a href="https://www.instagram.com/rsqkrnwn?igsh=cnNna2lzb3k4Y2wy" style="--i:7"><i class='bx bxl-instagram'></i></box-icon></a>
-                <a href="https://wa.me/+6281809208710" style="--i:8"><i class='bx bxl-whatsapp'></i></box-icon></a>
-                <a href="https://www.tiktok.com/@banana251106?_t=8pxkdvACDGK&_r=1" style="--i:9"><i class='bx bxl-tiktok'></i></box-icon></a>
-                <a href="https://www.linkedin.com/in/riski-kurniawan-01966232a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BYk4%2BioJgT2WAz9MgLwlulQ%3D%3D" style="--i:10"><i class='bx bxl-linkedin' ></i></box-icon></a>
+                <a href="https://www.instagram.com/axis_pp_ra?igsh=YjI4OWQ5aXV0YnVy" style="--i:7"><i class='bx bxl-instagram' style="font-size: 12px;"></i></box-icon></a>
+                <a href="https://wa.me/+6289508883568" style="--i:8"><i class='bx bxl-whatsapp' style="font-size:12px;"></i></box-icon ></a>
+                <a href="https://www.tiktok.com/@axis_pp_ra" style="--i:9"><i class='bx bxl-tiktok' style="font-size:12px;"></i></box-icon></a>
+                <a href="https://github.com/Ajiskeren" style="--i:10"><i class='bx bxl-github' style="font-size:12px;"></i></box-icon></a>
             </div>
-            <a href="#contact" class="btn-box">More About Me</a>
+            <a href="#contact" class="btn-box1">Contact Me</a>
         </div>
-        <span class="home-imgHover"></span>
+        <span id="aboutT" class="home-imgHover"></span>
     </section>
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="yourphoto.jpg">
-        </div>
         <div class="about-text">
-            <h2>About<span>Me</span></h2>
-            <h4>Riski Kurniawan</h4>
-            <p>I am a Computer Science Student and i'am 17 years old with a deep passion for information technology. I am fascinated by how technology is changing our lives and committed to being part of that change. I have expertise in electronics and programming, as well as experience as a Network Technician. In addition, I am also an active frontend and web developer, mastering HTML, CSS, and JavaScript, as well as frameworks like React. I enjoy creating responsive and engaging websites, combining functionality with aesthetic design. In addition, I have an interest in graphic design, where I express my creativity. I believe that technology and art can synergize to create amazing experiences. I look forward to contributing to impactful projects and continuing to learn in this field.</p>
-            <a href="#contact" class="btn-box">More About Me</a>
+            <h2 data-aos="fade-right" data-aos-duration="1000" >Sejarah<span>Tumpeng</span></h2>
         </div>
-    </section>
-    <section>
-        <div class="services" id="services">
-            <div class="container">
-                <h1 class="sub-title">My <span>services</span></h1>
-                <div class="services-list">
-                    <div>
-                        <i class='bx bx-code' style='color:#00eeff'  ></i>
-                        <h2>UI/UX Design</h2>
-                        <p>I provide professional UI/UX design services focused on intuitive, aesthetic and functional user interfaces. I ensure designs that are visually appealing and effective in achieving your business goals for websites, mobile applications, and other digital platforms.</p>
-                        <a href="#contact" class="read">Contact me</a>
-                    </div>
-                    
-    
-                    <div>
-                        <i class='bx bx-crop' style='color:#00eeff'  ></i>
-                        <h2>Graphic Design</h2>
-                        <p>I provide creative graphic design services that will bring your ideas to life into stunning visual masterpieces. I ensure each design is not only aesthetic, but also effective in conveying a message, I am ready to help you build a strong and memorable visual identity.</p>
-                        <a href="#contact" class="read">Contact me</a>
-                    </div>
-                    <div>
-                        <i class='bx bxl-visual-studio' style='color:#00eeff'></i>
-                        <h2>Frontend Dev</h2>
-                        <p>I offer frontend development services that focus on creating attractive and responsive user interfaces. With expertise in HTML, CSS, and JavaScript, I'm committed to ensuring that every project not only looks great but also functions well across a variety of devices and browsers.</p>
-                        <a href="#contact" class="read">Contact me</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section> 
-    <h1 class="sub-title">My <span>Skills</span></h1>
-    <section>
-      
-        <div class="container1" id="skills">
-                <h1 class="heading1">Technical Skills</h1>
-            <div class="Technical-bars">
-            
-                <div class="bar"><i style="color: #c95d2e" class='bx bxl-html5'></i>
-                    <div class="info">
-                        <span>HTML</span>
-                    </div>
-                    <div class="progress-line html">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #147bbc" class='bx bxl-css3'></i>
-                    <div class="info">
-                        <span>CSS</span>
-                    </div>
-                    <div class="progress-line css">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #b0bc1e" class='bx bxl-javascript'></i>
-                    <div class="info">
-                        <span>Javascript</span>
-                    </div>
-                    <div class="progress-line javascript">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #c322c9" class='bx bxl-python'></i>
-                    <div class="info">
-                        <span>Python</span>
-                    </div>
-                    <div class="progress-line python">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #69bcbc" class='bx bxl-react'></i>
-                    <div class="info">
-                        <span>React</span>
-                    </div>
-                    <div class="progress-line react">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    
-        <div class="container1">
-            <h1 class="heading1">Profesional Skills</h1>
-            <div class="radial-bars">
-
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-1" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                        <div class="percentage">90%</div>
-                        <div class="text">creativity</div>
-                </div>
-                <div class="radial-bar">
-    
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-2" cx="100" cy="100" r="80"></circle>
+    <section class="about" id="about">
+        <div class="about-intro">
         
-                    </svg>
-                    <div class="percentage">80%</div>
-                    <div class="text">comunication</div>
-                </div>            
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-3" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">75%</div>
-                    <div class="text">problem solve</div>
-                </div>
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-4" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">85%</div>
-                    <div class="text">TeamWork</div>
-                </div>
-            </div>
+        <div data-aos="fade-right" data-aos-duration="1000" class="about-text">
+<div id="container" class="content1 show">
+    <!-- Bahasa Indonesia -->
+    <h3>Bahasa Indonesia</h3>
+    <p>
+      Tumpeng adalah hidangan khas Indonesia berupa nasi berbentuk kerucut yang dikelilingi lauk-pauk, menjadi pusat dalam perayaan dan ritual adat.
+      Asal-Usul Kuno: Tradisi ini dimulai di Jawa kuno, di mana bentuk kerucut melambangkan penghormatan terhadap gunung (dianggap tempat bersemayam arwah leluhur atau dewa).
+      Perubahan Makna: Dipengaruhi Hindu, bentuknya dikaitkan dengan Gunung Mahameru yang sakral. Setelah masuknya Islam, maknanya bergeser menjadi wujud rasa syukur kepada Tuhan.
+      Tujuan: Tumpeng pada dasarnya adalah simbol kebersamaan, kesejahteraan, dan berbagi berkah, disajikan dalam acara Slametan atau Syukuran untuk memperingati peristiwa penting dalam kehidupan.
+    </p>
+  </div>
+
+  <button onclick="nextLang()" id="btn" class="btn-box2">Bahasa Inggris</button>
         </div>
+        </div>
+    </section>
+    <section>
+  <div class="services" id="services">
+    <div class="container">
+      <h1 class="sub-title">Resep <span>Tumpeng</span></h1>
+
+      <!-- Tombol kategori -->
+      <div class="service-buttons">
+        <button data-aos="fade-right" data-aos-duration="1000" data-category="Nasi" >Nasi Kuning</button>
+        <button data-aos="fade-right" data-aos-duration="500" data-category="Kentang">Sambal Kentang</button>
+        <button data-aos="fade-right" data-aos-duration="1700" data-category="Urap">Urap</button>
+        <button data-aos="fade-right" data-aos-duration="1000" data-category="Mie">Sambal Telur</button>
+        <button data-aos="fade-right" data-aos-duration="500" data-category="Ayam">Tempe</button>
+      </div>
+
+      <!-- Daftar card -->
+
+      <div class="services-list">
+
+        <div class="card" data-category="Tumpeng">
+          <h2>Tumpeng</h2>
+          <img src="assettt/tumpeng.webp" alt="">
+        </div>
+
+        <div class="card" data-category="Nasi">
+          <h2>Nasi Kuning</h2>
+          <img src="assettt/nasi.webp" alt="">
+          <p>Bahan bahan</p>
+          <li>4 cup beras</li>
+<li>65ml santan instan</li>
+<li>air secukupnya</li>
+<li>1 sendok garam</li>
+<li>2 lembar daun salam</li>
+<li>2 daun jeruk</li>
+<li>1 batang sereh</li>
+<br>
+<p>Bumbu halus:</p>	
+ <li>4 bawang merah</li>
+ <li>3 bawang putih</li>
+ <li>1 bungkus kunyit bubuk</li>
+ <li>2 kemiri</li>
+ <li>1/2 sdm ketumbar</li>
+ <li>air</li>
+<br> 
+<p>Langkah-langkah:</p>
+<ol>
+ <li>haluskan bawang merah, bawang putih, kemiri, ketumbar, lalu masukkan kunyit bubuk dan air secukupnya</li>
+ <li>tumis bumbu halus</li>
+ <li>masukkan daun salam dan daun jeruk</li>
+ <li>tambahkan 1 sdt garam</li>
+ <li>campurkan beras dan tambahkan 65 ml santan serta air secukupnya</li>
+ <li>masak nasi di magicom seperti biasa</li>
+ <li>setelah matang, masukkan nasi kuning kedalam cetakan tumpeng</li>
+ <li>sajikan nasi tumpeng di wadah yang tersedia</li>
+ </ol>
+
+        </div>
+
+        <div class="card" data-category="Kentang">
+          <h2>Sambal kentang</h2>
+          <img src="assettt/kentang.png" alt="">
+<br>
+<p>Bahan</p>	
+ <li>500 gram kentang, kupas dan potong dadu</li>
+ <li>Minyak goreng secukupnya</li>
+ <li>50 gram cabai merah keriting, buang bijinya</li>
+ <li>siung bawang merah</li>
+ <li>siung bawang putih</li>
+ <li>buah kemiri, sangrai</li>
+ <li>1 buah tomat merah</li>
+ <li>sendok teh terasi bakar</li>
+ <li>sendok makan gula merah, sisir</li>
+ <li>Garam secukupnya</li>
+ <li>Penyedap rasa (opsional)</li>
+ <li>Air secukupnya</li>
+<br> 
+<p>Langkah-langkah:</p>
+<ol>
+ <li>Cuci bersih kentang yang sudah dipotong dadu. Keringkan kentang dengan tisu dapur agar tidak meledak saat digoreng.</li>
+ <li>Panaskan minyak goreng dalam wajan dengan api sedang. Goreng kentang hingga berwarna kuning keemasan dan matang. Angkat dan tiriskan.</li>
+ <li>Haluskan cabai merah, bawang merah, bawang putih, kemiri, tomat, dan terasi bakar menggunakan ulekan hingga halus.</li>
+ <li>Masukkan semua bahan bumbu halus ke dalam blender. Tambahkan sedikit air agar mudah dihaluskan. Blender hingga semua bahan halus.</li>
+ <li>Panaskan sedikit minyak goreng sisa menggoreng kentang dalam wajan. Tumis bumbu halus hingga harum dan matang. Aduk terus agar tidak gosong.</li>
+ <li>Masukkan gula merah, garam, dan penyedap rasa (jika menggunakan) ke dalam tumisan bumbu. Aduk rata. Tambahkan sedikit air jika perlu agar bumbu tidak terlalu kering. Masak hingga bumbu mengental dan mengeluarkan minyak.</li>
+ <li>Memasukkan Kentang: Masukkan kentang goreng ke dalam wajan berisi sambal. Aduk rata hingga kentang terbalut bumbu dengan sempurna.</li>
+ <li>Masak sebentar hingga bumbu meresap ke dalam kentang. Koreksi rasa. Angkat dan sajikan sambal kentang selagi hangat.</li>
+ </ol>
+        </div>
+
+        <div class="card" data-category="Urap">
+          <h2>Urap Sayur</h2>
+          <img src="assettt/sayur.webp" alt="">
+          <br>
+          <p>Bahan</p>
+          <li>600-800g Sayuran</li>
+          <li>200g kacang panjang</li>
+          <li>150g taoge</li>
+          <li>150-200g bayam atau kangkung</li>
+          <li>wortel</li>
+          <li>Kol</li>
+          <li>Daun Singkong</li>
+          <li>200-250g Kelapa Parut</li>
+          <li>2-3 Lembar Daun Jeruk</li>
+          <li>4-6 Siung Bawang Merah</li>
+          <li>3-5 Siung Bawang Putih</li>
+          <li>3-6 Cabe merah Keriting</li>
+          <li>1 sdt terasi, dibakar/tumis</li>
+          <li>1 sdt Garam</li>
+          <li>1 sdm air asam jawa</li>
+          <li>1 sdm minyak goreng</li>
+          <br>
+          <p>Langkah-langkah</p>
+          <ol>
+            <li>cuci bersih semua sayur. Rebus sayuran secara terpisah (kacang panjang 2–3 menit, taoge 30–60 detik, bayam/kangkung cepat sampai layu) agar tekstur tetap. Tiriskan dan sisihkan sampai agak dingin.</li>
+            <li>jika kelapa basah, tiriskan sedikit. Untuk rasa lebih awet, ada yang menumis kelapa sebentar sebelum dicampur (keringkan sedikit di wajan tanpa minyak), tapi tidak wajib.</li>
+            <li>ulek/blender bawang merah, cabe, terasi, garam, dan gula hingga halus. Jika suka, tumis bumbu dengan sedikit minyak sampai harum (1–2 menit) — ini mengurangi bau langu terasi dan menguatkan rasa. Tambahkan air asam jawa jika dipakai.</li>
+            <li>masukkan kelapa parut ke mangkuk besar, tambahkan bumbu halus (atau bumbu tumis) lalu aduk rata. Cicipi; tambahkan garam/gula jika perlu. Jika terlalu kering, tambahkan sedikit air matang hangat, tapi jangan basah.</li>
+            <li>masukkan sayuran yang sudah ditiriskan ke dalam mangkuk berisi kelapa berbumbu. Aduk perlahan hingga rata supaya kelapa membalut sayuran.</li>
+            <li>tambahkan irisan daun jeruk bila pakai, aduk sebentar. Sajikan segera pada suhu ruang atau dinginkan sebentar di kulkas.</li>
+          </ol>
+        </div>
+
+        <div class="card" data-category="Mie">
+          <h2>Sambal Telur</h2>
+          <img src="assettt/telur.webp" alt="">
+          <p>Bahan</p>
+          <li>5-6 cabai rawit</li>
+          <li>2-3 Cabai merah</li>
+          <li>2 Siung bawang putih</li>
+          <li>1 Siung bawang merah</li>
+          <li>1/2 sdt garam</li>
+          <li>1/2 sdt gula pasir</li>
+          <li>2 butir telur rebus</li>
+          <li>Minyak goreng secukupnya</li>
+          <br>
+          <p>Langkah-langkah</p>
+          <ol>
+            <li>Goreng cabai rawit, cabai merah, bawang putih, dan bawang merah hingga layu.</li>
+            <li>Ulek atau blender bahan-bahan yang sudah digoreng dengan garam dan gula pasir hingga halus.</li>
+            <li>Panaskan sedikit minyak goreng, lalu tumis sambal hingga harum.</li>
+            <li>Tambahkan telur rebus, aduk rata.</li>
+            <li>Koreksi rasa dan sajikan</li>
+          </ol>
+        </div>
+          
+        <div class="card" data-category="Ayam">
+          <h2>Tempe Orek</h2>
+          <img src="assettt/tempe.webp" alt="">
+          <br>
+          <p>Bahan</p>
+          <li>3 Papan Tempe besar</li>
+          <li>1/4 Kacang Tanah</li>
+          <li>1/2 </li>
+          <li>Liter Minyak</li>
+          <li>2 Siung Bawang Putih</li>
+          <li>10 buah Cabai Merah Keriting</li>
+          <li>12 Cabai Rawit</li>
+          <li>Gula merah/ Kecap</li>
+          <li>Cuka/Air Asam Jawa</li>
+          <li>Daun jeruk</li>
+          <li>MSG (Penyedap rasa)</li>
+          <li>Garam</li>
+          <li>3 Siung bawang merah</li>
+          <br>
+          <p>Langkah-langkah</p>
+          <ol>
+            <li>Iris tempe kecil memanjang, kemudian goreng dengan kacang dalam minyak panas hingga kering. Angkat dan tiriskan.</li>
+            <li>Haluskan cabai rawit, cabai keriting, bawang merah, bawang putih, Kemudian masak hingga harum.</li>
+            <li>Lalu beri air secukupnya (jangan terlalu banyak) masukan gula merah, lada, garam, sedikit cuka/air asam Jawa, daun jeruk, dan penyedap sesuai selera.</li>
+            <li>Masak dengan api kecil hingga mengental, masukkan tempe dan kacang tanah. Aduk cepat hingga tempe dan kacang tanah tercampur merata dengan bumbu. Angkat lalu tempe orek siap disajikan</li>
+          </ol>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section >
+  <div class="adaktif">
+  <div>
+    <h2>Zat Aditif di Tumpengf</h2>
+    <h3>Tumpeng (Tanpa Pengawet)</h3>
+    <br>
+<p>Zat aditif adalah bahan yang kita tambahkan untuk mengubah warna, rasa, atau aroma makanan.</p>​
+<br>
+<ol>
+  <li>Pewarna Alami</li>
+  <p>Kunyit adalah pewarna alami yang memberikan warna kuning cerah pada nasi.</p>
+    <br>
+  <li>Penyedap Rasa Alami</li>
+  <p>​Garam memberi rasa asin dan menyeimbangkan semua rasa.</p>
+  <p>​Gula untuk menyeimbangkan rasa asin dan gurih (terkadang dipakai di beberapa lauk).</p>
+  <br>
+  <li>Pemberi Aroma dan Penguat Rasa Alami</li>
+  <p>​Rempah-rempah: Contohnya serai, daun salam, bawang, dan jeruk nipis (atau air asam). Ini semua berfungsi memberi aroma wangi yang khas dan membuat rasa tumpeng jadi lebih enak (gurih alami).</p>
+  <br>
+  <li>Penguat Rasa Buatan</li>
+  <p>​MSG (atau Kaldu Bubuk Instan): Jika ditambahkan, fungsinya adalah penguat rasa buatan yang membuat rasa gurih (umami) pada nasi atau lauk menjadi lebih kuat.</p></p>
+</ol>
+  </div>
+  </div>
+</section>
+
+<section class="dokumentasii" id="dokumentasii">
+  <div class="media">
+    <h2>Foto Dokumentasi<span> Tumpeng</span></h2>
+    <img data-aos="fade-right" data-aos-duration="500" src="Spansa.png" alt="">
+    <img data-aos="fade-right" data-aos-duration="500" src="Spansa.png" alt="">
+    <img data-aos="fade-right" data-aos-duration="500" src="Spansa.png" alt="">
+    <img data-aos="fade-right" data-aos-duration="500" src="Spansa.png" alt="">
+    <img data-aos="fade-right" data-aos-duration="500" src="Spansa.png" alt="">
+
+    <h2 data-aos="fade-right" data-aos-duration="400" >Video Dokumentasi<span> Tumpeng</span></h2>
+<div data-aos="fade-right" data-aos-duration="500" class="videoouter"><div class="video_canvas"><iframe width="80%" id="video_canvas" src="https://www.youtube.com/embed/qGM8gwFerOU?rel=0&cc_load_policy=1&loop=1&playlist=qGM8gwFerOU" frameborder="0"scrolling="no" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen loading="lazy" marginheight="0" marginwidth="0"></iframe><style>.videoouter{position: relative;text-align: right;width: 80%;max-width: 80%;box-sizing: border-box;}</style><a href="https://www.embedvideoyoutube.xyz">youtube video embed</a><a href="https://online-timer.me/">timer counter</a><a href="https://www.alarm-clock.net"></a><style>.video_canvas{position: relative;width: 100%;padding-top: 56.25%;height: 0;overflow: hidden;background: none !important;} .video_canvas iframe#video_canvas{position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 0;display: block;}</style></div></div>
+
+
+  </div>
+  </section>
+</section>
+    <section>
     </section>
 
 
-    
-        <div id="portfolio" id="project">
-            <div class="main-text" id="project">
-             <h2>Latest <span>Project</span></h2>
-
-            <div class="portfolio-content">
-                <div class="row">
-                    <img src="https://img.freepik.com/free-vector/gradient-colored-ui-kit-collection_23-2149218855.jpg?semt=ais_hybrid">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="https://img.freepik.com/free-vector/ux-ui-design-landing-page_52683-866.jpg?ga=GA1.1.1056495612.1727086293&semt=ais_hybrid">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-                        
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="https://img.freepik.com/free-vector/modern-infographic-element-collection_52683-1777.jpg?ga=GA1.1.1056495612.1727086293">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-                        
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="https://img.freepik.com/free-vector/dashboard-user-panel-with-flat-design_23-2147888543.jpg?ga=GA1.1.1056495612.1727086293">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-                        
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="https://img.freepik.com/premium-photo/business-cards-templates-flyers-customizable-designs-professional-branding_1191871-29336.jpg?semt=ais_hybrid">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-                        
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="https://img.freepik.com/free-vector/gradient-dashboard-statistic-evolution-template_23-2148284171.jpg?ga=GA1.1.1056495612.1727086293">
-                    <div class="layer">
-                        <h5>UI/UX Design</h5>
-                        <p>Gambar ini adalah contoh proyek yang tren untuk saat ini, menggambarkan perpaduan antara teknologi modern dan estetika desain yang inovatif. dan fokus pada pengalaman pengguna yang lebih personal. menciptakan solusi yang tidak hanya fungsional tetapi juga menarik secara visual dan relevan dengan kebutuhan masa kini.</p>
-                        
-                        <a href="#contact"><i class='bx bx-link-external' style="color: aliceblue;"></i></a>
-                    </div>
-                </div>
-               
-                
-            </div>
-        </div>
-    
 
     <section class="contact" id="contact">
         <div class="contact-text">
-            <h2>Contact <span>Me</span></h2>
-            <h4>Lets work together</h4>
-            <p>I'm glad you've visited my personal portfolio website! If you have any questions, suggestions, or would like to collaborate, please feel free to contact me through this form. I will endeavor to reply to your message as soon as possible.</p>
+          <br>
+            <h2 data-aos="fade-right" data-aos-duration="300" >Contact <span>We</span></h2>
+            <h4 data-aos="fade-right" data-aos-duration="600" >Wanna Make Something Cool?</h4>
+            <p id="typing" ></p>
             <ul class="contact-list">
-                <li><i class="bx bxs-send"></i> Riski Kurniawan@gmail.com</li>
-                <li><i class="bx bxs-phone"></i> 081809208710</li>
+                <li data-aos="zoom-in" data-aos-duration="500" ><i data-aos="fade-right" data-aos-duration="500" class="bx bxs-send"></i> awokawokoawkoakwo@gmail.com</li>
+                <li data-aos="zoom-in" data-aos-duration="500" ><i data-aos="fade-right" data-aos-duration="500" class="bx bxs-phone"></i> 089508883568</li>
             </ul>
-            <div class="contact-icons">
-                <a href="https://www.instagram.com/rsqkrnwn?igsh=cnNna2lzb3k4Y2wy"><i class="bx bxl-instagram"></i></a>
-                <a href="https://wa.me/+6281809208710"><i class="bx bxl-whatsapp"></i></a>
-                <a href="https://www.tiktok.com/@banana251106?_t=8pxkdvACDGK&_r=1"><i class="bx bxl-tiktok"></i></a>
-                <a href="https://www.linkedin.com/in/riski-kurniawan-01966232a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BYk4%2BioJgT2WAz9MgLwlulQ%3D%3D"><i class="bx bxl-linkedin"></i></a>
-            </div>
         </div>
     
-        <div class="contact-form">
-            <form action="">
-                <input type="text" placeholder="Enter Your Name" required>
-                <input type="email" placeholder="Enter Your Email" required>
-                <input type="text" placeholder="Enter Your Subject">
-                <textarea placeholder="Enter Your Message" required></textarea>
-                <input type="submit" value="Submit" class="send">
-            </form>
-        </div>
     </section>
+
+<div class="contact-form">
+  <form id="contactForm">
+    <input data-aos="fade-right" data-aos-duration="300" type="text" name="from_name" placeholder="Enter Your Name" required>
+    <textarea data-aos="fade-right" data-aos-duration="600" name="message" placeholder="Enter Your Message" required></textarea>
+    <button data-aos="fade-right" data-aos-duration="800" class="send" type="submit">Submit</button>
+  </form>
+</div>
+
+        <div class="contact-icons">
+            <a data-aos="flip-left" data-aos-duration="500" href="https://www.instagram.com/axis_pp_ra"><i class="bx bxl-instagram"></i></a>
+            <a data-aos="flip-left" data-aos-duration="1000" href="https://wa.me/+6289508883568"><i class="bx bxl-whatsapp"></i></a>
+            <a data-aos="flip-left" data-aos-duration="1500" href="https://www.tiktok.com/@axis_pp_ra"><i class="bx bxl-tiktok"></i></a>
+            <a data-aos="flip-left" data-aos-duration="2000" href="https://github.com/Ajiskeren"><i class="bx bxl-github"></i></a>
+        </div>
     <div class="last-text">
-        <p>developed with Riski Kurniawan</p>
+        <p>developed with M. Aziz Jaya</p>
     </div>
-    <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+    <a href="#" id="scrollUpBtn" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+
+
+
+  <!-- Sidebar -->
+  <div id="sidebarS" class="sidebar-container">
+    <div class="sidebar-widgetJ">
+        <div id="tanggal" class="tanggal-box"></div>
+  <div id="time" class="widget-time">
+    <span id="hours">00</span>
+    <span id="minutes">00</span>
+    <span id="seconds">00</span>
+  </div>
+  <button id="closeBtn"><i class='bx bxs-right-arrow-alt toggle-btnST'></i></button>
+<div class="sidebar-widget weather-widget">
+  <div id="weather" class="weather-horizontal">Memuat...</div>
+</div>
+</div>
+  </div>
     
-    
-    
-    
-        <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script src="main.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
     </body>
     </html>
 

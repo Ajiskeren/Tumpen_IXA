@@ -1,7 +1,702 @@
 var typed = new Typed(".text", {
-    strings: ["Computer Science Student", "Frontend Developer", "Web Developer"],
+    strings: ["IX A", "Kelompok Tumpeng IX A", "9A"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
     loop: true
 });
+
+
+// Ambil tombol scroll-up dan section home
+const scrollBtn = document.getElementById("scrollUpBtn");
+const homeSection = document.getElementById("home");
+
+// Observer untuk cek apakah section home terlihat
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Kalau home terlihat, sembunyikan tombol
+      scrollBtn.classList.add("hidden");
+    } else {
+      // Kalau bukan home, tampilkan tombol
+      scrollBtn.classList.remove("hidden");
+    }
+  });
+}, { threshold: 0.6 }); // 60% home terlihat baru dianggap aktif
+
+observer.observe(homeSection);
+
+
+const container = document.getElementById("container");
+    const btn = document.getElementById("btn");
+
+    // Data teks dalam tiga bahasa
+    const contents = [
+      {
+        title: "Bahasa Indonesia",
+        text: `Tumpeng adalah hidangan khas Indonesia berupa nasi berbentuk kerucut yang dikelilingi lauk-pauk, menjadi pusat dalam perayaan dan ritual adat.
+        Asal-Usul Kuno: Tradisi ini dimulai di Jawa kuno, di mana bentuk kerucut melambangkan penghormatan terhadap gunung (dianggap tempat bersemayam arwah leluhur atau dewa).
+        Perubahan Makna: Dipengaruhi Hindu, bentuknya dikaitkan dengan Gunung Mahameru yang sakral. Setelah masuknya Islam, maknanya bergeser menjadi wujud rasa syukur kepada Tuhan.
+        Tujuan: Tumpeng pada dasarnya adalah simbol kebersamaan, kesejahteraan, dan berbagi berkah, disajikan dalam acara Slametan atau Syukuran untuk memperingati peristiwa penting dalam kehidupan.`
+      },
+      {
+        title: "Bahasa Inggris",
+        text: `Tumpeng is an iconic Indonesian dish of a cone-shaped rice mound surrounded by side dishes, central to celebrations and rituals.
+        Ancient Origins: The tradition began in ancient Java, where the conical shape symbolized reverence for mountains (believed to be the dwelling place of ancestral spirits or gods).
+        Cultural Shifts: Influenced by Hinduism, the shape was associated with the sacred Mount Mahameru. With the arrival of Islam, the meaning transitioned into a symbol of gratitude to God.
+        Purpose: Tumpeng is fundamentally a symbol of unity, welfare, and shared blessings, traditionally served at Slametan or Syukuran to mark important life events.`
+      },
+      {
+        title: "Bahasa Lampung",
+        text: `tumpeng iyulah hidangan khas indonesia buberupa kan bubattuk kekerucut sai didikelilingiii lauk-pauk, ngemenjadiii induk ghellom perperayaan jama ritual adat.
+        asal-usul kuno: tradisi ajo dimulai di jawa kulot, di dipa battuk kekerucut ngelambangken penghormatan terhadop gunung (dianggap tempat buhejong arwah poyang atau dewa).
+        perubahan makna: didipengaruhiii hindu, bentuknya dikawikken jama gunung mahameru sai sakral. seghadu masuknya islam, maknanya bugisigih ngemenjadiii bentuk ghasa teghima hasih haguk tuhan,
+        di dipa kan sai ngemenjulang ke lambung ngelambangken hubungan jama sang pencipta.
+        tujuan: tumpeng pada dasarnya iyulah lambang kekebersamaan, kekesejahteraan, jama bubagi beghkah, dihidangken ghellom acagha slametan atau syukuran baka ngememperingatiii kejadiyan penting ghellom kekehidupan.`
+      }
+    ];
+
+    let currentLang = 0;
+
+    function nextLang() {
+      container.classList.remove("show"); // fade out
+      setTimeout(() => {
+        // ganti teks setelah fade out
+        currentLang = (currentLang + 1) % contents.length;
+        container.innerHTML = `
+          <h3>${contents[currentLang].title}</h3>
+          <p>${contents[currentLang].text}</p>
+        `;
+        container.classList.add("show"); // fade in
+        btn.innerText = contents[(currentLang + 1) % contents.length].title; // tombol ganti ke bahasa berikutnya
+      }, 600); // waktu fade (sesuai transition di CSS)
+    }
+
+
+const buttons = document.querySelectorAll('.service-buttons button');
+const cards = document.querySelectorAll('.services-list .card');
+
+// Tampilkan kategori default
+const defaultCategory = 'Tumpeng';
+showCategory(defaultCategory);
+
+// Fungsi untuk menampilkan kategori dengan animasi
+function showCategory(category) {
+  cards.forEach(card => {
+    const match = card.getAttribute('data-category') === category;
+
+    if (match) {
+      card.classList.remove('hide');
+      // tambahkan class show agar animasinya aktif lagi
+      setTimeout(() => card.classList.add('show'), 100);
+    } else {
+      card.classList.remove('show');
+      setTimeout(() => card.classList.add('hide'), 300);
+    }
+  });
+}
+
+// Event tombol
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const category = btn.getAttribute('data-category');
+    showCategory(category);
+  });
+});
+
+const sidebar = document.getElementById("sidebar");
+const toggleBtn = document.getElementById("toggleBtn");
+
+let x = 100;  // posisi awal X
+let y = 100;  // posisi awal Y
+let dx = 2;   // kecepatan arah X
+let dy = 2;   // kecepatan arah Y
+const speed = 1;
+
+function moveButton() {
+  const btnWidth = toggleBtn.offsetWidth;
+  const btnHeight = toggleBtn.offsetHeight;
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Update posisi
+  x += dx * speed;
+  y += dy * speed;
+
+  // Pantulan horizontal
+  if (x + btnWidth >= screenWidth || x <= 0) {
+    dx = -dx;
+  }
+
+  // Pantulan vertikal
+  if (y + btnHeight >= screenHeight || y <= 0) {
+    dy = -dy;
+  }
+
+  // Terapkan posisi
+  toggleBtn.style.left = x + "px";
+  toggleBtn.style.top = y + "px";
+
+  requestAnimationFrame(moveButton);
+}
+
+// Mulai animasi
+moveButton();
+
+
+
+// Fungsi buka/tutup
+function openSidebar() {
+  sidebar.classList.add("open");
+  document.body.classList.add("noscroll");
+  document.documentElement.classList.add("noscroll");
+}
+
+function closeSidebar() {
+  sidebar.classList.remove("open");
+  document.body.classList.remove("noscroll");
+  document.documentElement.classList.remove("noscroll");
+}
+
+// Klik tombol ☰
+toggleBtn.addEventListener("click", () => {
+  if (sidebar.classList.contains("open")) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+});
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diffX = endX - startX;
+
+  // Swipe kanan → buka
+  if (startX < 50 && diffX > 80) {
+    sidebar.classList.add("open");
+  }
+
+  // Swipe kiri → tutup
+  if (diffX < -80 && sidebar.classList.contains("open")) {
+    sidebar.classList.remove("open");
+  }
+});
+
+const swipeArea = document.getElementById("swipe-area");
+
+swipeArea.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+swipeArea.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diffX = endX - startX;
+
+  if (diffX > 80) sidebar.classList.add("open");
+  if (diffX > 80) sidebar.classList.add("open");
+  if (diffX > 80) sidebar.classList.add("open");
+});
+
+
+
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("play");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const seek = document.getElementById("seek");
+const cover = document.getElementById("cover");
+const coverImg = document.getElementById("coverImg");
+const coverMain = document.getElementById("coverMain");
+const title = document.getElementById("title");
+const artist = document.getElementById("artist");
+const playlistEl = document.getElementById("playlist");
+const canvas = document.getElementById("spectrum");
+const ctx = canvas.getContext("2d");
+const current = document.getElementById("current");
+const duration = document.getElementById("duration");
+let showOmori = false;
+const customImage = "Spansa.png";
+
+let currentTrack = 0;
+
+// Daftar lagu
+const tracks = [
+  { title: "Fall in Love Alone", artist: "Stacey Ryan", src: "assets/lagu1.mp3", cover: "assets/cover1.jpg", video: "assets/cover1.mp4" },
+  { title: "One The Way", artist: "AiNa The End", src: "assets/lagu2.mp3", cover: "assets/cover2.jpg" },
+  { title: "Best Friends", artist: "Rex Orange", src: "assets/lagu3.mp3", cover: "assets/cover3.jpg" },
+  { title: "Line Without hook", artist: "Rick Montogeomery", src: "assets/lagu4.mp3", cover: "assets/cover4.jpg" },
+  { title: "Every summertime", artist: "NIKI", src: "assets/lagu5.mp3", cover: "assets/cover5.jpg" },
+  { title: "Blue", artist: "Yung Kai", src: "assets/lagu6.mp3", cover: "assets/cover6.jpg" },
+  { title: "Double Take", artist: "Druv", src: "assets/lagu7.mp3", cover: "assets/cover7.jpg" },
+  { title: "Dandelions", artist: "Ruth B.", src: "assets/lagu8.mp3", cover: "assets/cover8.jpg" },
+  { title: "Two Birds", artist: "Regina Spektor", src: "assets/lagu9.mp3", cover: "assets/cover9.jpg" },
+  { title: "Devil Disguise", artist: "Marino", src: "assets/lagu10.mp3", cover: "assets/cover10.jpg" },
+  { title: "December", artist: "Neck Deep", src: "assets/lagu11.mp3", cover: "assets/cover11.jpg" }
+];
+
+// fungsi ganti cover dengan transisi
+function setCover(src) {
+  coverMain.style.opacity = 0; // mulai fade out
+  setTimeout(() => {
+    coverMain.src = src;       // ganti gambar
+    coverMain.style.opacity = 1; // fade in
+  }, 500);
+}
+
+// fungsi toggle Omori <-> cover lagu
+function toggleCover() {
+  if (showOmori) {
+    setCover(tracks[currentTrack].cover);
+  } else {
+    setCover(customImage);
+  }
+  showOmori = !showOmori;
+}
+
+// otomatis ganti tiap 5 detik
+setInterval(toggleCover, 5000);
+
+// bisa juga ganti manual kalau diklik
+coverMain.addEventListener("click", toggleCover);
+
+// Render playlist
+tracks.forEach((track, i) => {
+  const li = document.createElement("li");
+  li.textContent = track.title + " - " + track.artist;
+  li.addEventListener("click", () => loadTrack(i));
+  playlistEl.appendChild(li);
+});
+
+// Load track
+function loadTrack(index) {
+  currentTrack = index;
+  const track = tracks[currentTrack];
+  audio.src = track.src;
+  cover.src = track.cover;
+  coverImg.src = track.cover;
+  coverMain.src = track.cover;
+  title.textContent = track.title;
+  artist.textContent = track.artist;
+  
+  handleLyrics(track.src);
+
+  highlightPlaylist();
+  audio.play();
+  playBtn.textContent = "ツ";
+}
+
+// Highlight playlist
+function highlightPlaylist() {
+  [...playlistEl.children].forEach((el, i) => {
+    el.classList.toggle("active", i === currentTrack);
+  });
+}
+
+// Play/Pause
+playBtn.addEventListener("click", () => {
+  if(audio.paused) {
+    audio.play();
+    playBtn.textContent = "ツ";
+  } else {
+    audio.pause();
+    playBtn.textContent = "˙◠˙";
+  }
+});
+
+// Prev/Next
+prevBtn.addEventListener("click", () => {
+  currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+  loadTrack(currentTrack);
+});
+nextBtn.addEventListener("click", () => {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+});
+
+// Auto next setelah lagu selesai
+audio.addEventListener("ended", () => {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+});
+
+// Progress bar
+audio.addEventListener("timeupdate", () => {
+  seek.value = audio.currentTime;
+  seek.max = audio.duration;
+});
+seek.addEventListener("input", () => {
+  audio.currentTime = seek.value;
+});
+
+// Saat pertama kali masuk, pilih lagu random & auto play
+window.addEventListener("load", () => {
+  const randomIndex = Math.floor(Math.random() * tracks.length);
+  loadTrack(randomIndex);
+});
+
+// ========================
+// LIRIK SYNC FUNCTION
+// ========================
+let lrcData = [];           // simpan lirik sinkron
+let lastActiveIndex = -1;   // track baris aktif terakhir
+const lyricsEl = document.getElementById("lyrics");
+
+// Fungsi utama: load lirik dari file .lrc
+function handleLyrics(trackSrc) {
+  const lrcFile = trackSrc.replace(".mp3", ".lrc");
+  fetch(lrcFile)
+    .then(res => {
+      if (!res.ok) throw new Error("File LRC tidak ditemukan: " + lrcFile);
+      return res.text();
+    })
+    .then(text => {
+      lrcData = parseLRC(text);
+      renderLyrics(lrcData);
+    })
+    .catch(err => {
+      console.warn("Tidak ada lirik:", err);
+      lrcData = [];
+      renderLyrics(lrcData);
+    });
+}
+
+// Parse isi LRC jadi array {time, lyric}
+function parseLRC(lrcText) {
+  const lines = lrcText.split(/\r?\n/);
+  const out = [];
+  for (const raw of lines) {
+    const match = raw.match(/\[(\d{2}):(\d{2})(?:\.(\d+))?\](.*)/);
+    if (match) {
+      const min = parseInt(match[1]);
+      const sec = parseInt(match[2]);
+      const ms = match[3] ? parseInt(match[3].padEnd(3, "0")) / 1000 : 0;
+      const time = min * 60 + sec + ms;
+      const lyric = match[4].trim();
+      if (lyric) out.push({ time, lyric });
+    }
+  }
+  return out;
+}
+
+// Render lirik ke HTML
+function renderLyrics(data) {
+  lyricsEl.innerHTML = "";
+  data.forEach((line, i) => {
+    const p = document.createElement("p");
+    p.textContent = line.lyric;
+    p.id = "lyric-" + i;
+    lyricsEl.appendChild(p);
+  });
+  lastActiveIndex = -1; // reset highlight
+}
+
+// Update lirik saat lagu berjalan
+function updateLyrics(currentTime) {
+  if (!lrcData.length) return;
+  let idx = lrcData.findIndex((line, i) => {
+    const nextTime = lrcData[i + 1] ? lrcData[i + 1].time : Infinity;
+    return currentTime >= line.time && currentTime < nextTime;
+  });
+  if (idx === -1) return;
+
+  if (idx !== lastActiveIndex) {
+    // hapus highlight lama
+    if (lastActiveIndex !== -1) {
+      const prev = document.getElementById("lyric-" + lastActiveIndex);
+      if (prev) prev.classList.remove("active");
+    }
+    // tambahkan highlight baru
+    const active = document.getElementById("lyric-" + idx);
+    if (active) {
+      active.classList.add("active");
+      lyricsEl.scrollTo({
+        top: active.offsetTop - lyricsEl.clientHeight / 0.345,
+        behavior: "smooth"
+      });
+    }
+    lastActiveIndex = idx;
+  }
+}
+
+// Hubungkan dengan audio player
+audio.addEventListener("timeupdate", () => {
+  updateLyrics(audio.currentTime);
+});
+
+canvas.width = window.innerWidth;
+  canvas.height = 200;
+
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const analyser = audioCtx.createAnalyser();
+
+  analyser.fftSize = 2048; // resolusi detail
+  const bufferLength = analyser.frequencyBinCount;
+  const dataArray = new Uint8Array(bufferLength);
+
+  const source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+
+  const barCount = 40; // bar besar
+  const smoothed = new Float32Array(barCount);
+
+  function draw() {
+    requestAnimationFrame(draw);
+    analyser.getByteFrequencyData(dataArray);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const barWidth = canvas.width / barCount;
+
+    for (let i = 0; i < barCount; i++) {
+      const percent = i / barCount;
+
+      // log scale index
+      const index = Math.floor(Math.pow(percent, 2.0) * bufferLength); 
+      let value = dataArray[index] || 0;
+
+      // boost high frequency (kanan)
+      const boost = 1 + percent * 2; // makin ke kanan makin naik
+      value *= boost;
+
+      // smoothing
+      smoothed[i] = smoothed[i] * 0.85 + value * 0.15;
+
+      // scaling
+      let barHeight = smoothed[i] * 0.5;
+
+      // biar gak hilang total
+      if (barHeight < 10) barHeight = 10;
+
+      ctx.fillStyle = "#00ffcc";
+      ctx.fillRect(
+        i * barWidth,
+        canvas.height - barHeight,
+        barWidth - 4,
+        barHeight
+      );
+    }
+  }
+
+  audio.onplay = () => {
+    audioCtx.resume().then(draw);
+  };
+
+  // format detik -> menit:detik
+  function formatTime(sec) {
+    if (isNaN(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s < 10 ? "0" + s : s}`;
+  }
+
+  // update total durasi setelah metadata siap
+  audio.addEventListener("loadedmetadata", () => {
+    duration.textContent = formatTime(audio.duration);
+  });
+
+  // update current time selama audio play
+  audio.addEventListener("timeupdate", () => {
+    current.textContent = formatTime(audio.currentTime);
+  });
+
+  // Toggle Sidebar
+const sidebarS = document.getElementById("sidebarS");
+const openBtn = document.getElementById("openBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+// Buka sidebar
+openBtn.addEventListener("click", () => {
+  sidebarS.classList.add("active");
+  openBtn.style.display = "none"; // sembunyikan tombol luar
+});
+
+// Tutup sidebar
+closeBtn.addEventListener("click", () => {
+  sidebarS.classList.remove("active");
+  openBtn.style.display = "block"; // munculkan lagi tombol luar
+});
+
+function updateTime() {
+  const now = new Date();
+  document.getElementById('hours').textContent = String(now.getHours()).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(now.getMinutes()).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(now.getSeconds()).padStart(2, '0');
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+async function getWeather(city) {
+  const url = `https://wttr.in/${city}?format=%C+%t`;
+
+  // Lebih banyak emoji
+  const weatherIcons = {
+    "sunny": "☀️🌞🔥",
+    "clear": "🌞✨🌙",
+    "cloud": "☁️🌥️🌤️",
+    "partly": "⛅🌤️🌥️",
+    "overcast": "🌥️☁️🌫️",
+    "rain": "🌧️🌦️💧",
+    "shower": "🌦️🌧️☔",
+    "thunder": "⛈️⚡🌩️",
+    "storm": "🌪️🌩️⛈️",
+    "drizzle": "💧🌦️☁️",
+    "mist": "🌫️🌁💨",
+    "fog": "🌫️🌁👓",
+    "snow": "❄️☃️⛄",
+    "ice": "🧊❄️🥶",
+    "wind": "💨🍃🌬️",
+    "hot": "🔥🥵🌞",
+    "cold": "🥶❄️🧊"
+  };
+
+  try {
+    const res = await fetch(url);
+    let data = await res.text(); // contoh: "Partly cloudy +29°C"
+
+    let icon = "🌍";
+    const desc = data.toLowerCase();
+
+    for (let key in weatherIcons) {
+      if (desc.includes(key)) {
+        icon = weatherIcons[key];
+        break;
+      }
+    }
+
+    document.getElementById("weather").textContent = `${icon} Bagelen: ${data}`;
+  } catch (err) {
+    document.getElementById("weather").textContent = "⚠️ Gagal memuat cuaca";
+  }
+}
+
+// Jalankan untuk Bagelen, Pesawaran
+getWeather("Bagelen+Pesawaran");
+
+// Auto-refresh tiap 10 menit
+setInterval(() => getWeather("Bagelen+Pesawaran"), 600000);
+
+(function(){
+  emailjs.init("vusiDp2YuSkT0-mcC"); // Public Key dari EmailJS
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm("service_2fde5xv", "template_jj81348", this)
+      .then(function(){
+        alert("✅ Pesan berhasil dikirim!");
+      }, function(error){
+        alert("❌ Gagal: " + JSON.stringify(error));
+      });
+  });
+});
+
+function tampilkanTanggal() {
+  const sekarang = new Date();
+
+  const hari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  const bulan = ["Januari","Februari","Maret","April","Mei","Juni",
+                 "Juli","Agustus","September","Oktober","November","Desember"];
+
+  const namaHari = hari[sekarang.getDay()];
+  const tanggal = sekarang.getDate();
+  const namaBulan = bulan[sekarang.getMonth()];
+  const tahun = sekarang.getFullYear();
+
+  document.getElementById("tanggal").textContent = 
+    `${namaHari}, ${tanggal} ${namaBulan} ${tahun}`;
+}
+
+// Jalankan saat halaman dimuat
+tampilkanTanggal();
+
+const bars = document.querySelectorAll('.bar');
+const radialBars = document.querySelectorAll('.radial-bar');
+
+// --- Untuk animasi bar horizontal ---
+function checkVisibleBars() {
+  bars.forEach(bar => {
+    const rect = bar.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      bar.classList.add('active');
+    } else {
+      bar.classList.remove('active');
+    }
+  });
+}
+
+// --- Untuk animasi radial bar ---
+function checkVisibleRadialBars() {
+  radialBars.forEach(bar => {
+    const rect = bar.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      bar.classList.add('active');
+    } else {
+      bar.classList.remove('active');
+    }
+  });
+}
+
+// Gabungkan event scroll & load untuk keduanya
+window.addEventListener('scroll', () => {
+  checkVisibleBars();
+  checkVisibleRadialBars();
+});
+window.addEventListener('load', () => {
+  checkVisibleBars();
+  checkVisibleRadialBars();
+});
+
+const text = `Hey! If you have any questions, please do not hesitate to contact us
+I promise I’ll hit you back ASAP!`;
+
+const typingEl = document.getElementById("typing");
+let index = 0;
+let isTyping = false;
+
+// Ubah ini sesuai kata yang ingin dijadikan titik mulai animasi:
+const startWord = "promise"; 
+const startIndex = text.indexOf(startWord);
+
+// Bagian sebelum kata "Drop" langsung tampil
+const staticText = text.slice(0, startIndex);
+
+function typeEffect() {
+  if (index < text.length) {
+    typingEl.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 35);
+  } else {
+    isTyping = false;
+  }
+}
+
+const typingObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !isTyping) {
+      isTyping = true;
+
+      // tampilkan bagian awal
+      typingEl.textContent = staticText;
+
+      // mulai efek mengetik dari kata "Drop"
+      index = startIndex;
+      typeEffect();
+    }
+  });
+}, { threshold: 0.4 });
+
+typingObserver.observe(typingEl);
