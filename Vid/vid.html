@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Proyek Tumpeng</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffefba, #ffffff);
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #333;
+        animation: fadeInDown 1.2s ease forwards;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #555;
+        animation: fadeIn 1.8s ease forwards;
+      }
+
+      .loader {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #ff9800;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-top: 25px;
+        animation: spin 1.5s linear infinite;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 15px;
+        font-size: 0.85rem;
+        color: #777;
+        animation: fadeInUp 2s ease forwards;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎥 Video Proyek Tumpeng</h1>
+    <p>Video dokumentasi masih dalam proses pengeditan.</p>
+    <p>Silakan cek kembali setelah <strong>11 November 2025</strong>.</p>
+    <div class="loader"></div>
+    <footer>© 2025 Proyek Tumpeng — Dibuat dengan ❤️ oleh Kelompok Tumpeng IX A</footer>
+  </body>
+</html>
